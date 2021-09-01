@@ -1,8 +1,14 @@
 const startButton = document.querySelector(".start");
 const resetButton = document.querySelector(".reset");
 const displayDiv = document.querySelector(".display")
+const leapDiv = document.querySelector(".leapDiv")
 
-let status = "stopped"
+// buttons status for start-stop and reset-leap
+let status = "stopped";
+let timer ;
+
+let pCount = 0
+
 let saliseCounter = 0;
 let secondCounter = 0;
 let minuteCounter = 0;
@@ -16,14 +22,45 @@ function startButtonf() {
         startButton.innerHTML = "Stop"
         status = "started";
         interval = window.setInterval(increser, 2);
+        timer == "leap"
+        resetButton.innerHTML = "Leap"
+
 
     } else {
         startButton.innerHTML = "Start"
         status = "stopped";
+        timer = "reset"
         window.clearInterval(interval);
+        resetButton.innerHTML = "Reset"
 
     }
 }
+
+function resetButtonf() {
+    if (timer == "reset") {
+        window.clearInterval(interval);
+        status = "stopped";
+        timer = "";
+        saliseCounter = 0;
+        secondCounter = 0;
+        minuteCunter = 0;
+        displayDiv.innerHTML = "00:00:00";
+        // leapDiv.remove("p");
+
+    } else {
+        pCount += 1;
+        console.log(displayDiv.innerHTML);
+        // console.log(` leap div -->${LeapDiv}`)
+        let leapText = document.createElement("p")
+        leapText.innerText = `${pCount}.   ${displayDiv.innerHTML}`;
+        document.querySelector(".leapDiv").appendChild(leapText);
+        
+    }
+}
+
+
+
+
 
 let increser = function () {
     saliseCounter += 1;
@@ -47,28 +84,15 @@ let increser = function () {
 
     if (secondCounter < 10) {
         displaySecond = `0${secondCounter}`;
-    } else{
+    } else {
         displaySecond = secondCounter;
     }
-    if (minuteCounter < 10){
+    if (minuteCounter < 10) {
         displayMunite = `0${minuteCounter}`;
-    } else{
+    } else {
         displayMunite = `${minuteCounter}`;
     }
 
 
-        displayDiv.innerHTML = `${displayMunite}:${displaySecond}:${displaySalise}`
-}
-
-
-
-function resetButtonf() {
-    window.clearInterval(interval);
-    status = "stopped";
-    saliseCounter = 0;
-    secondCounter = 0;
-    minuteCunter = 0;
-    displayDiv.innerHTML = "00:00:00";
-
-
+    displayDiv.innerHTML = `${displayMunite}:${displaySecond}:${displaySalise}`
 }

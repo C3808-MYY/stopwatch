@@ -5,13 +5,12 @@
 }
 
 body{
-    background-color: rgba(85, 8, 8, 0.363);
+    background-color: rgba(3, 3, 3, 0.863);
 }
 .title{
     display: flex;
     justify-content: center;
     margin-top: 2%;
-    // margin-bottom: 5%;
     font-size: 3rem;
 }
 .display{
@@ -28,10 +27,12 @@ body{
     button{
         background-color: black;
         color: red;
+        border-radius: 50px;
         outline: 0px solid red;
         width: 100px;
         height: 50px;
         margin: 5px 30px;
+        font-size: 1.5rem;
         
     }
 }
@@ -39,4 +40,16 @@ button:hover{
     background-color: red;
     color: black;
     cursor : pointer
+}
+
+.leapDiv{
+    margin-top: 20px;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+
+    font-size: 1.5rem;
+
 }
