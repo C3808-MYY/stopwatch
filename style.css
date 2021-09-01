@@ -6,7 +6,33 @@
 }
 
 body {
-  background-color: rgba(3, 3, 3, 0.863);
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(45deg, #b90a0a, #7db92f, #6a14cc, #4b0647);
+  background-size: 500% 500%;
+  -webkit-animation: animeBG 3s ease infinite;
+          animation: animeBG 3s ease infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+@-webkit-keyframes animeBG {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+@keyframes animeBG {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 
 .title {
