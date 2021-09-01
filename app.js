@@ -5,7 +5,7 @@ const leapDiv = document.querySelector(".leapDiv")
 
 // buttons status for start-stop and reset-leap
 let status = "stopped";
-let timer ;
+let timer ="reset";
 
 let pCount = 0
 
@@ -21,8 +21,8 @@ function startButtonf() {
     if (status === "stopped") {
         startButton.innerHTML = "Stop"
         status = "started";
-        interval = window.setInterval(increser, 2);
-        timer == "leap"
+        timer = "leap";
+        interval = window.setInterval(increser, 10);
         resetButton.innerHTML = "Leap"
 
 
@@ -40,19 +40,20 @@ function resetButtonf() {
     if (timer == "reset") {
         window.clearInterval(interval);
         status = "stopped";
-        timer = "";
+        timer = "reset";
         saliseCounter = 0;
         secondCounter = 0;
         minuteCunter = 0;
         displayDiv.innerHTML = "00:00:00";
-        // leapDiv.remove("p");
+        // 
+        
 
     } else {
         pCount += 1;
         console.log(displayDiv.innerHTML);
         // console.log(` leap div -->${LeapDiv}`)
         let leapText = document.createElement("p")
-        leapText.innerText = `${pCount}.   ${displayDiv.innerHTML}`;
+        leapText.innerText = `${pCount}. Lap       ${displayDiv.innerHTML}`;
         document.querySelector(".leapDiv").appendChild(leapText);
         
     }
@@ -66,7 +67,7 @@ let increser = function () {
     saliseCounter += 1;
 
     //increse second and munite after complated a salise and second
-    if (saliseCounter / 60 === 1) {
+    if (saliseCounter / 100 === 1) {
         saliseCounter = 0;
         secondCounter += 1;
 
