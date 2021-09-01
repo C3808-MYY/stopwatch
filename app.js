@@ -6,7 +6,7 @@ const leapDiv = document.querySelector(".leapDiv")
 // buttons status for start-stop and reset-leap
 let status = "stopped";
 let timer ="reset";
-
+let x = 0;
 let pCount = 0
 
 let saliseCounter = 0;
@@ -23,6 +23,7 @@ function startButtonf() {
         status = "started";
         timer = "leap";
         interval = window.setInterval(increser, 10);
+        x = 1;
         resetButton.innerHTML = "Leap"
 
 
@@ -37,7 +38,7 @@ function startButtonf() {
 }
 
 function resetButtonf() {
-    if (timer == "reset") {
+    if (timer == "reset" && x == 1) {
         window.clearInterval(interval);
         status = "stopped";
         timer = "reset";
@@ -45,12 +46,13 @@ function resetButtonf() {
         secondCounter = 0;
         minuteCunter = 0;
         displayDiv.innerHTML = "00:00:00";
-        // 
+        leapDiv.innerHTML = "";
+        pCount = 0;
         
 
-    } else {
+    } else if(timer == "leap"){
         pCount += 1;
-        console.log(displayDiv.innerHTML);
+        // console.log(displayDiv.innerHTML);
         // console.log(` leap div -->${LeapDiv}`)
         let leapText = document.createElement("p")
         leapText.innerText = `${pCount}. Lap       ${displayDiv.innerHTML}`;
